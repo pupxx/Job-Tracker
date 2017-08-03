@@ -1,13 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3 col-md-offset-0">
-      <label for="filter">Filter</label>
-      <input  id="filter" type="search" class="form-control input-sm search-form" ng-model="filterInput" placeholder="Filter">
-    </div>
-    <div class="col-md-1 col-md-offset-4">
-      <a class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
-    </div>
-  </div>
+
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <form ng-submit="$ctrl.addJob(job)" ng-show="$ctrl.show">
@@ -63,8 +55,17 @@
       </form>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-0">
+      <label for="filter">Filter</label>
+      <input  id="filter" type="search" class="form-control input-sm search-form" ng-model="filterInput" placeholder="Filter">
+    </div>
+    <div class="col-md-1 col-md-offset-4">
+      <a class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
+    </div>
+  </div>
 
-  <div  ng-repeat="job in $ctrl.allJobs | orderBy:'dateApplied' | filter:filterInput" class="row">
+  <div  ng-repeat="job in $ctrl.allJobs | orderBy:'-dateApplied' | filter:filterInput" class="row">
     <div ng-class="{'expand' : !toggle}" class="jobContainer col-md-8 col-md-offset-0">
       <div class="row">
         <div class="col-md-2 col-md-offset-10 editDeleteIcons">

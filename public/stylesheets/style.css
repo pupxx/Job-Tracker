@@ -13,10 +13,6 @@ form{
   margin-bottom: 20px;
 }
 
-.red{
-  background-color: red;
-}
-
 #filter{
   margin-bottom: 10px;
 }
@@ -53,6 +49,7 @@ form{
 }
 
 .jobContainer{
+  min-height: 115px;
   margin: 10px;
   border-radius: 20px;
   border: 1px solid grey;
@@ -60,7 +57,7 @@ form{
 
 .description{
   white-space: pre-wrap;
-  height: 30px;
+  min-height: 30px;
 }
 
 .noteDescription{
@@ -78,13 +75,3 @@ form{
 .garbageCan{
   margin-left: 10px;
 }
-
-/*background: #b3e3a2; */
-/* For browsers that do not support gradients */
-/*background: -webkit-radial-gradient(#fff, #b3e3a2, #14ad01); */
-/* Safari 5.1 to 6.0 */
-/*background: -o-radial-gradient(#fff, #b3e3a2, #14ad01); */
-/* For Opera 11.6 to 12.0 */
-/*background: -moz-radial-gradient(#fff, #b3e3a2, #14ad01); */
-/* For Firefox 3.6 to 15 */
-/*background: radial-gradient(#fff, #b3e3a2, #14ad01); /* Standard syntax */*/
