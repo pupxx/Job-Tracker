@@ -1,0 +1,77 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-color: lightyellow;*/
+}
+
+a {
+  color: blue;
+  cursor: pointer;
+}
+
+form{
+  margin-bottom: 20px;
+}
+
+#filter{
+  margin-bottom: 10px;
+}
+
+.jobTitle{
+  font-weight: 800;
+}
+
+.underline{
+  text-decoration: underline;
+}
+.noteDate{
+  font-size: .75em;
+  font-weight: bold;
+}
+
+.contactInfo{
+  font-size: .75em;
+}
+
+.notes{
+  /*background-color: lightyellow;*/
+  border-radius: 20px;
+  padding-top: 10px;
+}
+
+.noteDescription, .noteDate{
+  margin-left: 20px;
+}
+
+.jobContainer{
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid grey;
+}
+
+.description{
+  white-space: pre-wrap;
+  height: 30px;
+}
+
+.noteDescription{
+  white-space: pre-wrap;
+}
+
+.editDeleteIcons{
+  text-align: center;
+}
+
+.garbageCan{
+  margin-left: 10px;
+}
+
+/*background: #b3e3a2; */
+/* For browsers that do not support gradients */
+/*background: -webkit-radial-gradient(#fff, #b3e3a2, #14ad01); */
+/* Safari 5.1 to 6.0 */
+/*background: -o-radial-gradient(#fff, #b3e3a2, #14ad01); */
+/* For Opera 11.6 to 12.0 */
+/*background: -moz-radial-gradient(#fff, #b3e3a2, #14ad01); */
+/* For Firefox 3.6 to 15 */
+/*background: radial-gradient(#fff, #b3e3a2, #14ad01); /* Standard syntax */*/

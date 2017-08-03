@@ -1,0 +1,190 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-md-offset-0">
+      <label for="filter">Filter</label>
+      <input  id="filter" type="search" class="form-control input-sm search-form" ng-model="filterInput" placeholder="Filter">
+    </div>
+    <div class="col-md-1 col-md-offset-4">
+      <a class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <form ng-submit="$ctrl.addJob(job)" ng-show="$ctrl.show">
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.title" type="text" class="form-control" id="title" placeholder="title">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="data" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-6">
+            <textarea ng-model="$ctrl.newJob.description" id="data" rows="4" cols="49"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="firstName" class="col-sm-2 col-form-label">Contact First Name</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.contactFirstName" type="text" class="form-control" id="firstName" placeholder="firstName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lastName" class="col-sm-2 col-form-label">Contact Last Name</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.contactLastName" type="text" class="form-control" id="lastName" placeholder="lastName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.contactEmail" type="text" class="form-control" id="email" placeholder="email">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.contactPhone" type="text" class="form-control" id="phone" placeholder="phone">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="dateApplied" class="col-sm-2 col-form-label">Date Applied</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.dateApplied" type="date" class="form-control" id="dateApplied" placeholder="dateApplied">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="jobUrl" class="col-sm-2 col-form-label">Job URL</label>
+          <div class="col-sm-6">
+            <input ng-model="$ctrl.newJob.jobUrl" type="text" class="form-control" id="jobUrl" placeholder="jobUrl">
+          </div>
+        </div>
+        <input type="submit" name="" value="Add">
+      </form>
+    </div>
+  </div>
+
+  <div  ng-repeat="job in $ctrl.allJobs | orderBy:'-dateApplied' | filter:filterInput"" class="row">
+    <div  class="jobContainer col-md-8 col-md-offset-0">
+      <div class="row">
+        <div class="col-md-2 col-md-offset-10 editDeleteIcons">
+          <span>
+            <a><i ng-click="$ctrl.toggleEditForm(job)" class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a><i ng-click="$ctrl.deleteJob(job)" class="fa fa-trash-o garbageCan" aria-hidden="true"></i></a>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h5 class="jobTitle">{{job.title}}</h5>
+          <h6><a ng-href="{{job.jobUrl}}">Job Posting</a></h6>
+        </div>
+        <div class="col-md-3 col-md-offset-5">
+          <h5 class="underline">Contact Info</h5>
+          <h6>{{job.contactFirstName}} {{job.contactLastName}}</h6>
+          <p class="contactInfo" >{{job.contactEmail}}</p>
+          <p class="contactInfo" >{{job.contactPhone}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-0">
+          <h5>Description</h5>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="description">{{job.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10">
+          <h5><a ng-click="$ctrl.toggleNotes(job)" ng-if="job.notes.length > 0" >View Notes ({{job.notes.length}}) | </a> <a ng-click="$ctrl.toggleNotesForm(job)">Add Note</a></h5>
+          <h5></h5>
+          <div ng-show="job.showNotes" ng-repeat="note in job.notes | orderBy:'noteCreatedAt'" class="notes">
+            <h6 class="noteDate">{{note.noteCreatedAt}} on {{$ctrl.noteDate}}</h6>
+            <h5 class="noteDescription">{{note.note}}</h5>
+          </div>
+        </div>
+      </div>
+      <!-- ***********************  Add note Form ************************  -->
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <form  ng-submit="$ctrl.addNote(job)" ng-show="job.showNotesForm" >
+          <div class="form-group row">
+            <label for="addedNote" class="col-sm-2 col-sm-offset-1 col-form-label">Note</label>
+            <div class="col-sm-10 col-sm-offset-1">
+              <textarea ng-model="job.note" id="addedNote" rows="4" cols="50"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2 col-md-offset-1">
+              <input type="submit" name="" value="Add">
+            </div>
+          </div>
+        </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-4">
+
+      <!-- ***************** Edit Form ************************ -->
+
+      <form ng-submit="$ctrl.editThisJob(job)" ng-show="job.editJob">
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-12">
+            <input ng-model="job.title" type="text" class="form-control" id="title" placeholder="title">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="data" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-12">
+            <textarea ng-model="job.description" id="data" rows="4" cols="38"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="firstName" class="col-sm-2 col-form-label">Contact First Name</label>
+          <div class="col-sm-12">
+            <input ng-model="job.contactFirstName" type="text" class="form-control" id="firstName" placeholder="firstName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lastName" class="col-sm-2 col-form-label">Contact Last Name</label>
+          <div class="col-sm-12">
+            <input ng-model="job.contactLastName" type="text" class="form-control" id="lastName" placeholder="lastName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-12">
+            <input ng-model="job.contactEmail" type="text" class="form-control" id="email" placeholder="email">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+          <div class="col-sm-12">
+            <input ng-model="job.contactPhone" type="text" class="form-control" id="phone" placeholder="phone">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="dateApplied" class="col-sm-2 col-form-label">Date Applied</label>
+          <div class="col-sm-12">
+            <input ng-model="job.dateApplied" type="text" class="form-control" id="dateApplied" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="jobUrl" class="col-sm-2 col-form-label">Job URL</label>
+          <div class="col-sm-12">
+            <input ng-model="job.jobUrl" type="text" class="form-control" id="jobUrl" placeholder="jobUrl">
+          </div>
+        </div>
+        <input type="submit" name="" value="Edit">
+      </form>
+    </div>
+  </div>
+
+
+</div>
