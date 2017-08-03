@@ -65,12 +65,17 @@
   </div>
 
   <div  ng-repeat="job in $ctrl.allJobs | orderBy:'dateApplied' | filter:filterInput" class="row">
-    <div  class="jobContainer col-md-8 col-md-offset-0">
+    <div ng-class="{'expand' : !toggle}" class="jobContainer col-md-8 col-md-offset-0">
       <div class="row">
         <div class="col-md-2 col-md-offset-10 editDeleteIcons">
           <span>
             <a><i ng-click="$ctrl.toggleEditForm(job)" class="fa fa-pencil" aria-hidden="true"></i></a>
             <a><i ng-click="$ctrl.deleteJob(job)" class="fa fa-trash-o garbageCan" aria-hidden="true"></i></a>
+            <a><i ng-click="toggle = !toggle" class="fa fa-expand expandIcon" aria-hidden="true"></i></a>
+
+
+
+
           </span>
         </div>
       </div>

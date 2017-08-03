@@ -13,8 +13,17 @@ form{
   margin-bottom: 20px;
 }
 
+.red{
+  background-color: red;
+}
+
 #filter{
   margin-bottom: 10px;
+}
+
+.expand{
+  height: 115px;
+  overflow: hidden;
 }
 
 .jobTitle{
@@ -44,7 +53,7 @@ form{
 }
 
 .jobContainer{
-  margin-bottom: 20px;
+  margin: 10px;
   border-radius: 20px;
   border: 1px solid grey;
 }
@@ -60,6 +69,10 @@ form{
 
 .editDeleteIcons{
   text-align: center;
+}
+
+.expandIcon{
+  margin-left: 10px;
 }
 
 .garbageCan{
