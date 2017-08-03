@@ -64,8 +64,9 @@
       <label for="filter">Filter</label>
       <input  id="filter" type="search" class="form-control input-sm search-form" ng-model="filterInput" placeholder="Filter">
     </div>
-    <div class="col-md-1 col-md-offset-2">
+    <div class="col-md-2 col-md-offset-2">
       <a ng-if="$ctrl.show === false" class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
+      <a ng-if="$ctrl.show === true" class="addjobLink" ng-click="$ctrl.toggleForm()">Close Form</a>
     </div>
   </div>
 
