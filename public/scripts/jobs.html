@@ -5,8 +5,9 @@
       <form name="$ctrl.addJobForm" novalidate ng-submit="$ctrl.addJob(job)" ng-show="$ctrl.show">
         <div class="form-group row">
           <label for="title" class="col-sm-2 col-form-label">Title</label>
-          <div class="col-sm-6">
-            <input ng-model="$ctrl.newJob.title" type="text" name="title" class="form-control" id="title" placeholder="title">
+          <div class="col-sm-6" ng-class="{
+            'has-error' : $ctrl.addJobForm.title.$invalid && $ctrl.addJobForm.title.$touched}">
+            <input required ng-model="$ctrl.newJob.title" type="text" name="title" class="form-control" id="title" placeholder="title">
           </div>
         </div>
         <div class="form-group row">
@@ -41,8 +42,11 @@
         </div>
         <div class="form-group row">
           <label for="dateApplied" class="col-sm-2 col-form-label">Date Applied</label>
-          <div class="col-sm-6">
-            <input ng-model="$ctrl.newJob.dateApplied" name="dateApplied" type="date" class="form-control" id="dateApplied" placeholder="dateApplied">
+          <div class="col-sm-6" ng-class="{
+            'has-error' : $ctrl.addJobForm.dateApplied.$invalid && $ctrl.addJobForm.dateApplied.$touched}">
+
+
+            <input required ng-model="$ctrl.newJob.dateApplied" name="dateApplied" type="date" class="form-control" id="dateApplied" placeholder="dateApplied">
           </div>
         </div>
         <div class="form-group row">
@@ -53,7 +57,7 @@
         </div>
         <div class="form-group row">
           <div class="col-md-1 col-md-offset-7">
-            <input ng-click="$ctrl.toggleForm()" type="submit" name="" value="Add">
+            <input  ng-disabled="$ctrl.addJobForm.$invalid" ng-click="$ctrl.toggleForm()" type="submit" name="" value="Add">
           </div>
         </div>
       </form>
@@ -94,7 +98,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10 col-md-offset-0">
+        <div class="col-md-11 col-md-offset-0">
           <h5>Description</h5>
           <div class="row">
             <div class="col-md-12">

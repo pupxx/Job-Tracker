@@ -3,10 +3,10 @@ exports.up = function(knex) {
     table.increments();
     table.text('title').notNullable().defaultTo('');
     table.text('description').notNullable().defaultTo('');
-    table.string('contactFirstName').notNullable().defaultTo('');
-    table.string('contactLastName').notNullable().defaultTo('');
-    table.string('contactEmail').notNullable().defaultTo('');
-    table.string('contactPhone').notNullable().defaultTo('');
+    table.string('contactFirstName').defaultTo('Unknown');
+    table.string('contactLastName').defaultTo('Unknown');
+    table.string('contactEmail').defaultTo('Unknown');
+    table.string('contactPhone').defaultTo('Unknown');
     table.text('jobUrl').notNullable().defaultTo('');
     table.date('dateApplied').notNullable();
 
