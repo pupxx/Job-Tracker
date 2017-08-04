@@ -13,12 +13,20 @@ form{
   margin-bottom: 20px;
 }
 
+/*.h4, .h5, .h6, h4, h5, h6, .smallMarginBottom{
+  margin-bottom: 3px;
+}*/
+
+.h4, .h5, .h6, h4, h5, h6, .smallMarginTop{
+  margin-top: 3px;
+}
+
 #filter{
   margin-bottom: 10px;
 }
 
 .expand{
-  height: 115px;
+  height: 125px;
   overflow: hidden;
 }
 
@@ -35,7 +43,7 @@ form{
 }
 
 .contactInfo{
-  font-size: .75em;
+  font-size: .80em;
 }
 
 .notes{

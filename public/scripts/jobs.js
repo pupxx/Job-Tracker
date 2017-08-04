@@ -9,6 +9,7 @@
   function controller (baseUrl, $http, $state, jobService){
     const vm = this
 
+    // vm.newJobFromForm = Object.assign({}, job)
 
     vm.$onInit = onInit;
     vm.toggleForm = toggleForm;
@@ -42,11 +43,18 @@
       jobService.getAllJobs().then((allJobs)=>{
         vm.allJobs = jobService.allJobs
         vm.allJobs.forEach((job)=>{
+          job.showNotes = false
+          job.phoneScreen = moment(job.datePhoneScreen).format('ll')
+          job.dateAppliedOn = moment(job.dateApplied).format('ll')
+          job.takehome = moment(job.dateSubmittedTakeHome).format('ll')
+          job.interview = moment(job.dateInPersonInterview).format('ll')
+          job.followUp = moment(job.dateFollowUp).format('ll')
           job.notes.forEach((note)=>{
-            vm.noteDate = moment(note.noteCreatedAt).format('ll')
+            note.noteDate = moment(note.noteCreatedAt).format('ll')
             note.noteCreatedAt = moment(note.noteCreatedAt, 'YYYYMMDD').fromNow();
           })
         })
+        console.log(vm.allJobs);
       })
     }
 
@@ -76,12 +84,14 @@
     }
 
     function toggleEditForm(job){
-      job.dateApplied = moment(job.dateApplied).format('YYYY-MM-DD')
-      if(job.editJob === false){
+      if(!job.editJob){
         job.editJob = true;
       }else{
         job.editJob = false;
       }
+      job.dateApplied = moment(job.dateApplied).format('YYYY-MM-DD');
+      job.datePhoneScreen = moment(job.datePhoneScreen).format('YYYY-MM-DD')
+
     }
 
     function toggleNotesForm(job){
