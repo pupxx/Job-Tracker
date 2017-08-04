@@ -96,7 +96,10 @@
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-sm-1 col-sm-offset-9">
+          <div class="col-sm-3">
+            <a ng-if="$ctrl.show === true" class="addjobLink" ng-click="$ctrl.toggleForm()">Close Form</a>
+          </div>
+          <div class="col-sm-1 col-sm-offset-6">
             <input ng-disabled="$ctrl.addJobForm.$invalid" ng-click="$ctrl.toggleForm()" type="submit" name="" value="Add Job">
           </div>
         </div>
@@ -119,7 +122,6 @@
     </div>
     <div class="col-sm-2 col-sm-offset-0">
       <a ng-if="$ctrl.show === false" class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
-      <a ng-if="$ctrl.show === true" class="addjobLink" ng-click="$ctrl.toggleForm()">Close Form</a>
     </div>
   </div>
 
