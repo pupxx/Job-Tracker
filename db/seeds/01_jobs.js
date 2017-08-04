@@ -13,7 +13,7 @@ exports.seed = function(knex) {
         contactEmail: 'joebob@gmail.com',
         contactPhone: '555-555-5555',
         dateApplied: '06/15/2017',
-        datePhoneScreen: '06/20/2017',
+        datePhoneScreen: null,
         dateSubmittedTakeHome: '06/25/2017',
         dateInPersonInterview: '06/30/2017',
         dateFollowUp: '07/05/2017',

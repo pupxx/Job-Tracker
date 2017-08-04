@@ -11,7 +11,7 @@ exports.seed = function(knex) {
 		 id: 2,
         note: 'More conversations about this job.',
         job_id: 1,
-        created_at: "2017-07-28T22:52:03.953Z",
+        created_at: "2017-07-28T22:53:03.953Z",
         updated_at: new Date()
       },{
 		 id: 3,
@@ -29,7 +29,7 @@ exports.seed = function(knex) {
 		 id: 5,
         note: 'More conversations about this job.',
         job_id: 2,
-        created_at: "2017-07-28T22:52:03.953Z",
+        created_at: "2017-07-28T22:53:03.953Z",
         updated_at: new Date()
       },{
 		 id: 6,

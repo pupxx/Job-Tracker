@@ -1,7 +1,7 @@
 <div class="container">
   <!-- ******************** Add Job Form ******************** -->
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-sm-10 col-md-5 col-md-offset-1 col-sm-offset-1">
       <form name="$ctrl.addJobForm" novalidate ng-submit="$ctrl.addJob(job)" ng-show="$ctrl.show">
         <div class="form-group row">
           <label for="title" class="-2 col-form-label">Title</label>
@@ -13,7 +13,7 @@
         <div class="form-group row">
           <label for="data" class="-2 col-form-label">Description</label>
           <div class="-6">
-            <textarea ng-model="$ctrl.newJob.description" name="description" id="data" rows="4" cols="49"></textarea>
+            <textarea ng-model="$ctrl.newJob.description" name="description" id="data" rows="4" cols="51"></textarea>
           </div>
         </div>
         <div class="form-group row">
@@ -96,8 +96,8 @@
           </div>
         </div>
         <div class="form-group row">
-          <div class="col-sm-1 col-sm-offset-7">
-            <input ng-disabled="$ctrl.addJobForm.$invalid" ng-click="$ctrl.toggleForm()" type="submit" name="" value="Add">
+          <div class="col-sm-1 col-sm-offset-9">
+            <input ng-disabled="$ctrl.addJobForm.$invalid" ng-click="$ctrl.toggleForm()" type="submit" name="" value="Add Job">
           </div>
         </div>
       </form>
@@ -108,14 +108,23 @@
       <label for="filter">Filter</label>
       <input id="filter" type="search" class="form-control input-sm search-form" ng-model="filterInput" placeholder="Filter">
     </div>
-    <div class="col-sm-2 col-sm-offset-2">
+    <div class="col-sm-2">
+      <label for="sort">  Sort by </label>
+      <select class="form-control" ng-model="$ctrl.searchBy" id="sort">
+        <option value="-dateApplied">Date Applied - Desc</option>
+        <option value="-phoneScreen">Phone Screen</option>
+        <option value="company">Company - Asc</option>
+        <option value="-company">Company - Desc</option>
+      </select>
+    </div>
+    <div class="col-sm-2 col-sm-offset-0">
       <a ng-if="$ctrl.show === false" class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
       <a ng-if="$ctrl.show === true" class="addjobLink" ng-click="$ctrl.toggleForm()">Close Form</a>
     </div>
   </div>
 
-  <div ng-repeat="job in $ctrl.allJobs | orderBy:'-dateApplied' | filter:filterInput" class="row">
-    <div ng-class="{'expand' : !toggle}" class="jobContainer col-sm-6 col-sm-offset-0">
+  <div ng-repeat="job in $ctrl.allJobs | orderBy:$ctrl.searchBy | filter:filterInput" class="row">
+    <div ng-class="{'expand' : !toggle, contacted:job.contacted}" class="jobContainer col-sm-6 col-sm-offset-0">
       <div class="row">
         <div class="col-sm-4">
           <h6 class="smallMarginBottom">Applied On {{job.dateAppliedOn}}</h6>
@@ -143,6 +152,10 @@
       </div>
       <div class="row">
         <div class="col-sm-11 col-sm-offset-0">
+          <h6 ng-if="job.phoneScreen">Phone Screening: {{job.phoneScreen}}</h6>
+          <h6 ng-if="job.takeHome">Submitted Take Home: {{job.takeHome}}</h6>
+          <h6 ng-if="job.interview">Interview: {{job.interview}}</h6>
+          <h6 ng-if="job.followUp">Follow Up: {{job.followUp}}</h6>
           <h5>Description</h5>
           <div class="row">
             <div class="col-sm-12">
@@ -155,7 +168,7 @@
         <div class="col-sm-10">
           <h5><a ng-click="$ctrl.toggleNotes(job)" ng-if="job.notes.length > 0" >View Notes ({{job.notes.length}}) | </a> <a ng-click="$ctrl.toggleNotesForm(job)">Add Note</a></h5>
           <h5></h5>
-          <div ng-show="job.showNotes" ng-repeat="note in job.notes | orderBy:'noteCreatedAt'" class="notes">
+          <div ng-show="job.showNotes" ng-repeat="note in job.notes | orderBy:'-created_at'" class="notes">
             <h6 class="noteDate">{{note.noteCreatedAt}} on {{note.noteDate}}</h6>
             <h5 class="noteDescription">{{note.note}}</h5>
           </div>
@@ -248,25 +261,25 @@
         <div class="form-group row">
           <label for="datePhoneScreen" class="-7 col-form-label">Phone Screen</label>
           <div class="-12">
-            <input ng-model="job.datePhoneScreen" type="text" class="form-control" id="datePhoneScreen">
+            <input ng-model="job.datePhoneScreen" type="text" class="form-control" id="datePhoneScreen" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">
           <label for="dateSubmittedTakeHome" class="-7 col-form-label">Submitted Take Home</label>
           <div class="-12">
-            <input ng-model="job.dateSubmittedTakeHome" type="text" class="form-control" id="dateSubmittedTakeHome">
+            <input ng-model="job.dateSubmittedTakeHome" type="text" class="form-control" id="dateSubmittedTakeHome" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">
           <label for="dateInPersonInterview" class="-7 col-form-label">In Person Interview</label>
           <div class="-12">
-            <input ng-model="job.dateInPersonInterview" type="text" class="form-control" id="dateInPersonInterview">
+            <input ng-model="job.dateInPersonInterview" type="text" class="form-control" id="dateInPersonInterview" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">
           <label for="dateFollowUp" class="-7 col-form-label">Follow Up</label>
           <div class="-12">
-            <input ng-model="job.dateFollowUp" type="text" class="form-control" id="dateFollowUp">
+            <input ng-model="job.dateFollowUp" type="text" class="form-control" id="dateFollowUp" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">

@@ -54,17 +54,36 @@ router.put('/edit-job/:id', function (req, res){
   let job = {
     title: req.body.title,
     description: req.body.description,
+    company: req.body.company,
+    city: req.body.city,
+    state: req.body.state,
     contactFirstName: req.body.contactFirstName,
     contactLastName: req.body.contactLastName,
     contactEmail: req.body.contactEmail,
     created_at: req.body.created_at,
     contactPhone: req.body.contactPhone,
     jobUrl: req.body.jobUrl,
-    dateApplied: req.body.dateApplied
+    dateApplied: req.body.dateApplied,
+    datePhoneScreen: req.body.datePhoneScreen,
+    dateSubmittedTakeHome: req.body.dateSubmittedTakeHome,
+    dateInPersonInterview: req.body.dateInPersonInterview,
+    dateFollowUp: req.body.dateFollowUp
   }
+  job.datePhoneScreen = convertFromNull(job.datePhoneScreen)
+  job.dateSubmittedTakeHome = convertFromNull(job.dateSubmittedTakeHome)
+  job.dateInPersonInterview = convertFromNull(job.dateInPersonInterview)
+  job.dateFollowUp = convertFromNull(job.dateFollowUp)
+
   knex('jobs').update(job).where('id', id).returning('*').then((editedJobId)=>{
     res.send(editedJobId)
   })
 })
+
+function convertFromNull(value){
+  if(value === ''){
+    value = null
+  }
+  return value
+}
 
 module.exports = router;

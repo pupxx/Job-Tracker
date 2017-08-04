@@ -25,8 +25,12 @@ form{
   margin-bottom: 10px;
 }
 
+.contacted{
+  background-color: lightgreen;
+}
+
 .expand{
-  height: 125px;
+  height: 128px;
   overflow: hidden;
 }
 

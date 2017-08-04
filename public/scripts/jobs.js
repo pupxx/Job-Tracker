@@ -24,6 +24,10 @@
     vm.addNote = addNote;
     vm.showNotes = false;
     vm.editJob = false;
+    vm.convertFromNull = convertFromNull;
+    vm.convertValueForEditForm = convertValueForEditForm;
+
+
 
 
     function onInit (){
@@ -44,27 +48,44 @@
         vm.allJobs = jobService.allJobs
         vm.allJobs.forEach((job)=>{
           job.showNotes = false
-          job.phoneScreen = moment(job.datePhoneScreen).format('ll')
           job.dateAppliedOn = moment(job.dateApplied).format('ll')
-          job.takehome = moment(job.dateSubmittedTakeHome).format('ll')
-          job.interview = moment(job.dateInPersonInterview).format('ll')
-          job.followUp = moment(job.dateFollowUp).format('ll')
+
+          job.phoneScreen = convertFromNull(job.datePhoneScreen, job.phoneScreen)
+          job.takeHome = convertFromNull(job.dateSubmittedTakeHome, job.takeHome)
+          job.interview = convertFromNull(job.dateInPersonInterview, job.interview)
+          job.followUp = convertFromNull(job.dateFollowUp, job.followUp)
+
+          if(job.datePhoneScreen != null){
+            job.contacted = true;
+          }else{
+            job.contacted = false;
+          }
+
+
           job.notes.forEach((note)=>{
             note.noteDate = moment(note.noteCreatedAt).format('ll')
             note.noteCreatedAt = moment(note.noteCreatedAt, 'YYYYMMDD').fromNow();
           })
         })
-        console.log(vm.allJobs);
+
       })
+    }
+
+    function convertFromNull(value, changedValue){
+      if(value === null){
+        changedValue = ''
+      }else{
+        changedValue = moment(value).format('ll')
+      }
+      return changedValue
     }
 
     function addJob(){
       let job = vm.newJob;
       delete vm.newJob;
       jobService.addJob(job).then((addedJob)=>{
-        console.log(addedJob);
         vm.getAllJobs();
-      });
+      })
     }
 
     function setTab(num){
@@ -83,6 +104,15 @@
       }
     }
 
+    function convertValueForEditForm(value){
+      if(value === null){
+        value = ''
+      }else{
+        value = moment(value).format('YYYY-MM-DD')
+      }
+      return value
+    }
+
     function toggleEditForm(job){
       if(!job.editJob){
         job.editJob = true;
@@ -90,13 +120,15 @@
         job.editJob = false;
       }
       job.dateApplied = moment(job.dateApplied).format('YYYY-MM-DD');
-      job.datePhoneScreen = moment(job.datePhoneScreen).format('YYYY-MM-DD')
 
+      job.datePhoneScreen = convertValueForEditForm(job.datePhoneScreen)
+      job.dateSubmittedTakeHome = convertValueForEditForm(job.dateSubmittedTakeHome)
+      job.dateInPersonInterview = convertValueForEditForm(job.dateInPersonInterview)
+      job.dateFollowUp = convertValueForEditForm(job.dateFollowUp)      
     }
 
     function toggleNotesForm(job){
-      console.log(job.showNotesForm);
-      if(job.showNotesForm === false){
+      if(!job.showNotesForm){
         job.showNotesForm = true;
       }else{
         job.showNotesForm = false;
@@ -124,7 +156,6 @@
       }
       delete job.note
       jobService.addNote(note).then((addedNote)=>{
-        console.log(addedNote);
         vm.getAllJobs()
       })
     }

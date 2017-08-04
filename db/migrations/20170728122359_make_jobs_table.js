@@ -12,10 +12,10 @@ exports.up = function(knex) {
     table.string('contactPhone').defaultTo('Unknown');
     table.text('jobUrl').notNullable().defaultTo('');
     table.date('dateApplied').notNullable();
-    table.date('datePhoneScreen');
-    table.date('dateSubmittedTakeHome');
-    table.date('dateInPersonInterview');
-    table.date('dateFollowUp');
+    table.date('datePhoneScreen').defaultTo(null);
+    table.date('dateSubmittedTakeHome').defaultTo(null);
+    table.date('dateInPersonInterview').defaultTo(null);
+    table.date('dateFollowUp').defaultTo(null);
 
     table.timestamps(true, true);
   });
