@@ -55,7 +55,7 @@
           job.interview = convertFromNull(job.dateInPersonInterview, job.interview)
           job.followUp = convertFromNull(job.dateFollowUp, job.followUp)
 
-          if(job.datePhoneScreen != null){
+          if(job.datePhoneScreen != null || job.dateSubmittedTakeHome != null || job.dateInPersonInterview != null){
             job.contacted = true;
           }else{
             job.contacted = false;
@@ -124,7 +124,7 @@
       job.datePhoneScreen = convertValueForEditForm(job.datePhoneScreen)
       job.dateSubmittedTakeHome = convertValueForEditForm(job.dateSubmittedTakeHome)
       job.dateInPersonInterview = convertValueForEditForm(job.dateInPersonInterview)
-      job.dateFollowUp = convertValueForEditForm(job.dateFollowUp)      
+      job.dateFollowUp = convertValueForEditForm(job.dateFollowUp)
     }
 
     function toggleNotesForm(job){
