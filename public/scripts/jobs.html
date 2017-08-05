@@ -59,6 +59,12 @@
           </div>
         </div>
         <div class="form-group row">
+          <label for="jobUrl" class="-2 col-form-label">Job URL</label>
+          <div class="-6">
+            <input ng-model="$ctrl.newJob.jobUrl" name="jobUrl" type="text" class="form-control" id="jobUrl" placeholder="jobUrl">
+          </div>
+        </div>
+        <div class="form-group row">
           <label for="dateApplied" class="-2 col-form-label">Date Applied</label>
           <div class="-6" ng-class="{
             'has-error' : $ctrl.addJobForm.dateApplied.$invalid && $ctrl.addJobForm.dateApplied.$touched}">
@@ -87,12 +93,6 @@
           <label for="dateFollowUp" class="-2 col-form-label">Date Of In Person Interview</label>
           <div class="-6">
             <input ng-model="$ctrl.newJob.dateFollowUp" name="dateFollowUp" type="date" class="form-control" id="dateFollowUp" placeholder="dateFollowUp">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="jobUrl" class="-2 col-form-label">Job URL</label>
-          <div class="-6">
-            <input ng-model="$ctrl.newJob.jobUrl" name="jobUrl" type="text" class="form-control" id="jobUrl" placeholder="jobUrl">
           </div>
         </div>
         <div class="form-group row">
@@ -190,7 +190,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-2 col-sm-offset-1">
+              <div class="col-sm-2 col-sm-offset-10">
                 <input type="submit" name="" value="Add">
               </div>
             </div>
