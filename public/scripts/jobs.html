@@ -134,7 +134,7 @@
         <div class="col-sm-4">
           <h6 class="smallMarginBottom">Applied On {{job.dateAppliedOn}}</h6>
         </div>
-        <div class="col-sm-2 col-sm-offset-6 editDeleteIcons">
+        <div class="col-xs-6 col-xs-offset-4 col-md-3 col-md-offset-5 editDeleteIcons">
           <span>
             <a><i ng-click="$ctrl.toggleEditForm(job)" class="fa fa-pencil" aria-hidden="true"></i></a>
             <a><i ng-click="$ctrl.deleteJob(job)" class="fa fa-trash-o garbageCan" aria-hidden="true"></i></a>
@@ -163,7 +163,7 @@
           <h6 ng-if="job.followUp">Follow Up: {{job.followUp}}</h6>
           <h5>Description</h5>
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm">
               <p class="description">{{job.description}}</p>
             </div>
           </div>
@@ -204,95 +204,96 @@
 
       <form ng-submit="$ctrl.editThisJob(job)" ng-show="job.editJob">
         <div class="form-group row">
-          <label for="title" class="-7 col-form-label">Title</label>
-          <div class="-12">
+          <label for="title" class="col-form-label">Title</label>
+          <div class="">
             <input ng-model="job.title" type="text" class="form-control" id="title" placeholder="title">
           </div>
         </div>
         <div class="form-group row">
-          <label for="company" class="-7 col-form-label">Company</label>
-          <div class="-12">
+          <label for="company" class="col-form-label">Company</label>
+          <div class="">
             <input ng-model="job.company" type="text" class="form-control" id="company" placeholder="company">
           </div>
         </div>
         <div class="form-group row">
-          <label for="data" class="-7 col-form-label">Description</label>
-          <div class="-12">
+          <label for="data" class="col-form-label">Description</label>
+          <div class="">
             <textarea ng-model="job.description" id="data" rows="10" cols="49"></textarea>
           </div>
         </div>
         <div class="form-group row">
-          <label for="city" class="-7 col-form-label">Location City</label>
-          <div class="-12">
+          <label for="jobUrl" class="col-form-label">Job URL</label>
+          <div class="">
+            <input ng-model="job.jobUrl" type="text" class="form-control" id="jobUrl" placeholder="jobUrl">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="city" class="col-form-label">Location City</label>
+          <div class="">
             <input ng-model="job.city" class="form-control" name="city" id="city" type="text" placeholder="City">
           </div>
         </div>
         <div class="form-group row">
-          <label for="state" class="-7 col-form-label">Location State</label>
-          <div class="-12">
+          <label for="state" class="col-form-label">Location State</label>
+          <div class="">
             <input ng-model="job.state" class="form-control" name="state" id="state" type="text" placeholder="State">
           </div>
         </div>
         <div class="form-group row">
-          <label for="firstName" class="-7 col-form-label">Contact First Name</label>
-          <div class="-12">
+          <label for="firstName" class="col-form-label">Contact First Name</label>
+          <div class="">
             <input ng-model="job.contactFirstName" type="text" class="form-control" id="firstName" placeholder="firstName">
           </div>
         </div>
         <div class="form-group row">
           <label for="lastName" class="-7 col-form-label">Contact Last Name</label>
-          <div class="-12">
+          <div class="">
             <input ng-model="job.contactLastName" type="text" class="form-control" id="lastName" placeholder="lastName">
           </div>
         </div>
         <div class="form-group row">
           <label for="email" class="-7 col-form-label">Email</label>
-          <div class="-12">
+          <div class="">
             <input ng-model="job.contactEmail" type="text" class="form-control" id="email" placeholder="email">
           </div>
         </div>
         <div class="form-group row">
           <label for="phone" class="-7 col-form-label">Phone</label>
-          <div class="-12">
+          <div class="">
             <input ng-model="job.contactPhone" type="text" class="form-control" id="phone" placeholder="phone">
           </div>
         </div>
         <div class="form-group row">
           <label for="dateApplied" class="-7 col-form-label">Date Applied</label>
-          <div class="-12">
+          <div class="">
             <input ng-model="job.dateApplied" type="text" class="form-control" id="dateApplied">
           </div>
         </div>
         <div class="form-group row">
-          <label for="datePhoneScreen" class="-7 col-form-label">Phone Screen</label>
-          <div class="-12">
+          <label for="datePhoneScreen" class="col-form-label">Phone Screen</label>
+          <div class="">
             <input ng-model="job.datePhoneScreen" type="text" class="form-control" id="datePhoneScreen" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">
-          <label for="dateSubmittedTakeHome" class="-7 col-form-label">Submitted Take Home</label>
-          <div class="-12">
+          <label for="dateSubmittedTakeHome" class="col-form-label">Submitted Take Home</label>
+          <div class="">
             <input ng-model="job.dateSubmittedTakeHome" type="text" class="form-control" id="dateSubmittedTakeHome" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">
-          <label for="dateInPersonInterview" class="-7 col-form-label">In Person Interview</label>
-          <div class="-12">
+          <label for="dateInPersonInterview" class="col-form-label">In Person Interview</label>
+          <div class="">
             <input ng-model="job.dateInPersonInterview" type="text" class="form-control" id="dateInPersonInterview" placeholder="YYYY-MM-DD">
           </div>
         </div>
         <div class="form-group row">
-          <label for="dateFollowUp" class="-7 col-form-label">Follow Up</label>
-          <div class="-12">
+          <label for="dateFollowUp" class="col-form-label">Follow Up</label>
+          <div class="">
             <input ng-model="job.dateFollowUp" type="text" class="form-control" id="dateFollowUp" placeholder="YYYY-MM-DD">
           </div>
         </div>
-        <div class="form-group row">
-          <label for="jobUrl" class="-7 col-form-label">Job URL</label>
-          <div class="-12">
-            <input ng-model="job.jobUrl" type="text" class="form-control" id="jobUrl" placeholder="jobUrl">
-          </div>
-        </div>
+
         <input type="submit" name="" value="Edit">
       </form>
     </div>
