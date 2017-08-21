@@ -126,6 +126,9 @@
     <div class="col-sm-2 col-sm-offset-0">
       <a ng-if="$ctrl.show === false" class="addJobLink" ng-click="$ctrl.toggleForm()">Add Job</a>
     </div>
+    <div class="">
+      <h4>Applied for: {{$ctrl.allJobs.length}}</h4>
+    </div>
   </div>
 
   <div ng-repeat="job in $ctrl.allJobs | orderBy:$ctrl.searchBy | filter:filterInput" class="row">
